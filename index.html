@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuição de Poisson</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+
+<body>
+    <header>
+        <h1>Distribuição Discreta</h1>
+        <nav>
+            <a href="">Home</a>
+            <a href="">Poisson</a>
+        </nav>
+    </header>
+
+    <section>
+        <div id="divInput">
+            <h3>Teste de Caso</h1>
+                <p>Suponha que uma central de atendimento receba em média 3 chamadas por minuto (
+                    𝜆
+                    =
+                    3
+                    λ=3). Qual é a probabilidade de que, em um minuto, a central receba exatamente 5 chamadas (
+                    𝑘
+                    =
+                    5
+                    k=5)? </p>
+                <input type="number" id="inputData">
+        </div>
+
+        <div id="divGraphic">
+            <canvas id="poissonChart" width="100px" height="10px"></canvas>
+        </div>
+
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Parâmetro lambda
+        const lambda = 5;
+
+        // Função para calcular a probabilidade de Poisson
+        function poissonProbability(k, lambda) {
+            return (Math.pow(lambda, k) * Math.exp(-lambda)) / factorial(k);
+        }
+
+        // Função para calcular o fatorial
+        function factorial(n) {
+            if (n === 0 || n === 1) return 1;
+            let result = 1;
+            for (let i = 2; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+
+        // Gerar dados para o gráfico
+        const kValues = [];
+        const probabilities = [];
+        for (let k = 0; k <= 20; k++) {
+            kValues.push(k);
+            probabilities.push(poissonProbability(k, lambda));
+        }
+
+        // Configuração do gráfico
+        const ctx = document.getElementById('poissonChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: kValues,
+                datasets: [{
+                    label: `Distribuição de Poisson (λ = ${lambda})`,
+                    data: probabilities,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Probabilidade'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Número de Eventos (k)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
