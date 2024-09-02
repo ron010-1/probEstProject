@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distribuição de Poisson</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 </head>
 
@@ -39,69 +40,83 @@
 
     </section>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Parâmetro lambda
-        const lambda = 5;
+        let chart = null;
 
-        // Função para calcular a probabilidade de Poisson
-        function poissonProbability(k, lambda) {
-            return (Math.pow(lambda, k) * Math.exp(-lambda)) / factorial(k);
-        }
+        function calcular() {
+            // Parâmetro lambda
+            const lambda = parseFloat(document.getElementById('inputData').value);
+            console.log(lambda);
 
-        // Função para calcular o fatorial
-        function factorial(n) {
-            if (n === 0 || n === 1) return 1;
-            let result = 1;
-            for (let i = 2; i <= n; i++) {
-                result *= i;
+            // Função para calcular a probabilidade de Poisson
+            function poissonProbability(k, lambda) {
+                return (Math.pow(lambda, k) * Math.exp(-lambda)) / factorial(k);
             }
-            return result;
-        }
 
-        // Gerar dados para o gráfico
-        const kValues = [];
-        const probabilities = [];
-        for (let k = 0; k <= 20; k++) {
-            kValues.push(k);
-            probabilities.push(poissonProbability(k, lambda));
-        }
+            // Função para calcular o fatorial
+            function factorial(n) {
+                if (n === 0 || n === 1) return 1;
+                let result = 1;
+                for (let i = 2; i <= n; i++) {
+                    result *= i;
+                }
+                return result;
+            }
 
-        // Configuração do gráfico
-        const ctx = document.getElementById('poissonChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: kValues,
-                datasets: [{
-                    label: `Distribuição de Poisson (λ = ${lambda})`,
-                    data: probabilities,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Probabilidade'
-                        }
-                    },
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Número de Eventos (k)'
+            // Gerar dados para o gráfico
+            const kValues = [];
+            const probabilities = [];
+            for (let k = 0; k <= 20; k++) {
+                kValues.push(k);
+                probabilities.push(poissonProbability(k, lambda));
+            }
+
+            // Configuração do gráfico
+            const ctx = document.getElementById('poissonChart').getContext('2d');
+
+            // Se o gráfico já existe, destrua-o antes de criar um novo
+            if (chart) {
+                chart.destroy();
+            }
+
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: kValues,
+                    datasets: [{
+                        label: `Distribuição de Poisson (λ = ${lambda})`,
+                        data: probabilities,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Probabilidade'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Número de Eventos (k)'
+                            }
                         }
                     }
                 }
-            }
-        });
+            });
+        }
+
+        // Adiciona um listener para o evento input
+        document.getElementById('inputData').addEventListener('input', calcular);
+
+        // Calcula o gráfico inicialmente
+        calcular();
     </script>
-    <script src="scripts.js"></script>
 </body>
 
 </html>
