@@ -18,6 +18,8 @@
 
 body{
     background-color: rgb(245, 250, 255);
+    width: 70%;
+    margin: auto;
 }
 
 header {
@@ -50,21 +52,9 @@ section{
     gap: 10px;
 }
 
-#divInput {
-    background-color: white;
-    width: 30%;
-    min-height: 88vh;
-    display: flex;
-    flex-direction: column;
-    padding-top: 30px;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;
-} 
-
 #divGraphic {
     background-color: white;
-    width: 75%;
+    width: 100%;
     min-height: 88vh;
     display: flex;
     flex-direction: column;
@@ -72,4 +62,15 @@ section{
     justify-content: start;
     align-items: center;
     gap: 10px;
+}
+
+p{
+    font-size: 20px;
+}
+
+input{
+    width: 200px;
+    height: 25px;
+    margin-bottom: 50px;
+    justify-items: center;
 }
