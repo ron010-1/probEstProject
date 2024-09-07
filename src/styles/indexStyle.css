@@ -33,6 +33,10 @@ header {
     border-bottom: 1px solid black;
 }
 
+canvas {
+    width: 100% !important; 
+    height: auto !important;  
+}
 nav {
     display: flex;
     justify-content: space-between;
@@ -68,9 +72,25 @@ p{
     font-size: 20px;
 }
 
-input{
+input {
     width: 200px;
-    height: 25px;
-    margin-bottom: 50px;
-    justify-items: center;
+    height: 15px;
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 4px 8px rgba(74, 144, 226, 0.2);
+    background-color: #fff;
+}
+
+input::placeholder {
+    color: #999;
 }
