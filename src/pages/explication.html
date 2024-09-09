@@ -14,7 +14,7 @@
     <header>
         <h1>Distribuição Discreta</h1>
         <nav>
-            <a href="/src/pages/explication.html">Home</a>
+            <a href="">Home</a>
             <a href="../../index.html">Poisson</a>
         </nav>
     </header>
@@ -48,20 +48,20 @@
             P(X = x) = (e^(-λ) * λ^x) / x!
         </div>
 
-        <p> A probabilidade de que existam exatamente x ocorrências (x sendo um inteiro não negativo, X = 0, 1, 2, ...
+        <p> A probabilidade de que existam exatamente x ocorrências (x sendo um inteiro não negativo, <b>X = 0, 1, 2, ...</b>
         </p>
 
         <ul>
             <li>
-                e é base do logaritmo natural (e = 2.71828...),
+                <span class="mini-equation">e</span> é base do logaritmo natural <b>(e = 2.71828...)</b> ,
             </li>
             <li>
-                x! é o fatorial de x,
+               <span class="mini-equation">x!</span> é o fatorial de x,
             </li>
             <li>
                 λ é um número real, igual ao número esperado de ocorrências que ocorrem num dado intervalo de tempo. Por
                 exemplo, se o evento ocorre a uma média de 4 minutos, e estamos interessados no número de eventos que
-                ocorrem num intervalo de 10 minutos, usaríamos como modelo a distribuição de Poisson com λ=10/4= 2.5.
+                ocorrem num intervalo de 10 minutos, usaríamos como modelo a distribuição de Poisson com  <span class="mini-equation">λ=10/4= 2.5</span>
             </li>
         </ul>
 
@@ -81,7 +81,7 @@
                 Poisson, onde a taxa média λ é igual a 3.
             </li>
             <li>
-                <b>Média (E[X]) = Variância (Var[X]) = λ:</b>A média e a variância da distribuição de Poisson são ambas
+                <p class="equation">Média (E[X]) = Variância (Var[X]) = λ</p> A média e a variância da distribuição de Poisson são ambas
                 iguais ao parâmetro λ.
             </li>
             <li>
@@ -107,24 +107,24 @@
                 </li>
                 <li>
                     <b>Parâmetro λ:</b>
-                    λ representa a taxa média de ocorrência, nesse caso, λ = 10 chamadas/hora.
+                    <b>λ</b> representa a taxa média de ocorrência, nesse caso, <b>λ = 10 chamadas/hora</b>.
                 </li>
             </ul>
         </div>
         <div>
-            <h1>Utilizando a fórmula da PMF de Poisson:</h1>
-            <p>P(X = x) = (e^(-λ) * λ^x) / x!</p>
+            <h2>Utilizando a fórmula da PMF de Poisson:</h2>
+            <p class="equation">P(X = x) = (e^(-λ) * λ^x) / x!</p>
             <ul>
-                <li>P(X = x) é a probabilidade de ocorrer exatamente x eventos</li>
-                <li>e é a constante de Euler (aproximadamente 2.71828)</li>
-                <li>λ é a taxa média</li>
-                <li>x é o número de ocorrências desejado (no nosso caso, x = 15)</li>
-                <li>x! é o fatorial de x</li>
+                <li><span class="mini-equation">P(X = x)</span> é a probabilidade de ocorrer exatamente x eventos</li>
+                <li><span class="mini-equation">e</span> é a constante de Euler (aproximadamente 2.71828)</li>
+                <li><span class="mini-equation">λ </span>é a taxa média</li>
+                <li><span class="mini-equation">x </span>é o número de ocorrências desejado (no nosso caso, x = 15)</li>
+                <li><span class="mini-equation">x!</span>é o fatorial de x</li>
             </ul>
             <h3>Substituindo os valores:</h3>
-            <p>P(X = 15) = (e^(-10) * 10^15) / 15!</p>
+            <p class="equation">P(X = 15) = (e^(-10) * 10^15) / 15!</p>
             <h3>Usando uma calculadora científica ou software estatístico, encontramos:</h3>
-            <P>P(X = 15) ≈ 0.0347</P>
+            <P class="equation">P(X = 15) ≈ 0.0347</P>
 
             <h3>Interpretação</h3>
             <p>A probabilidade de a central de atendimento receber exatamente 15 chamadas em uma hora é de
